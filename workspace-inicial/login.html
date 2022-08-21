@@ -13,15 +13,33 @@
     body {
       background-color: rgb(248, 249, 250);
     }
+    
+    .text-center{
+      color:black;
+    }
+    img {
+      width: 500px;
+    }
+   
   </style>
 </head>
 
 <body>
   <main class="mt-5">
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <div class="container" >
+      <div class="text-center">
+        <img src="img/login.png" alt="imagenlogin">
+        <h1>Inicio de sesión </h1>
+
+        <h4> Email </h4>
+        <input type="text" id="email">
+        <br><br>
+        <h4>Contraseña</h4>
+        <input type="text" id="passw">
+        <br><br>
+        <button id="ok">INICIAR</button>
       </div>
+     
     </div>
   </main>
   <footer class="text-muted">

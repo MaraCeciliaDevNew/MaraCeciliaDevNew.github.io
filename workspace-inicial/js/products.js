@@ -7,11 +7,19 @@
   .then(data => {
    
     jsonData = data
-    
+    console.log(data);
+
     mostrarLista(jsonData.products);
   
 
   });
+
+ 
+  function mostrarProducto(id){ 
+    localStorage.setItem('ProdId',id);
+    window.location.href= "product-info.html";
+  }
+
 
   function mostrarLista(products){
     let content = '';
@@ -21,8 +29,12 @@
       let carCost= element.cost;
       let carDescription= element.description;
       let carSoldCount= element.soldCount;
+      let carId = element.id;
 
-      let tdImage= "<td><img src='"+element.image+"' class='autos-img' /></td>";
+    
+
+      let tdImage= "<td>" +
+      "<img src='"+element.image+"' class='autos-img' onclick='mostrarProducto("+carId+")' /></td>";
       let tdContent ="<td>"+
         "<span>"+ carName + " " + carCurrency +" "+ carCost + "</span>"  + "<br>" +
         "<span>"+ carDescription+ "</span>";
@@ -31,8 +43,9 @@
       let tdCant = "<td><span>" + carSoldCount + "</span></td>";
       content +=  "<tr>" + tdImage + tdContent + tdCant + "</tr>";
 
-    });
-
+    
+     });
+    
     document.getElementById("cat-name").innerHTML = jsonData.catName
     document.getElementById("tabla").innerHTML = content;
 
@@ -147,6 +160,5 @@
 
     mostrarLista(jsonData.products);
    }
-
 
   

@@ -7,9 +7,39 @@
   <title>eMercado - Todo lo que busques está aquí</title>
 
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+<style>
+  .imgContenedor {
+    width: auto;
+  }
+  .imgClass{
+    height: 80px;
+  }
+
+  .subtitulosProduct-Info{
+    font-weight:200;
+    font-size:40px;
+  }
+  .nameProduct-info{
+    font-weight: 600;
+  }
+
+  span.usuario {
+    font-weight: 600;
+  }
+  #comments span {
+    margin : 5px
+
+  }
+  #comments p {
+    font-size: 13px;
+    margin: 5px;
+  }
+
+</style>
 </head>
 
 <body>
@@ -36,13 +66,69 @@
       </div>
     </div>
   </nav>
+
+  
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+
+      <div class="row">
+        <div class="col">
+          <h3 id="productName" class="nameProduct-info"></h3>
+          <hr />
+        
+          <h4 class="subtitulosProduct-info">Costo:</h4>
+          <p id="productCost"></p>
+          
+          <h4 class="subtitulosProduct-info">Descripción:</h4>
+          <p id="productDescription"></p>
+          
+          <h4 class="subtitulosProduct-info">Categía:</h4>
+          <p id="productCategory"></p>
+        
+          <h4 class="subtitulosProduct-info">Vendidos:</h4>
+          <p id="productSoldCount"></p>
+          
+        </div>
       </div>
+     
+      <div id="product-list" class="row">
+      </div>
+
+      <br>
+    <!--  --> 
+      <div id="comments" class="row">
+        <hr>
+        <h3>Comentarios</h3>
+      </div>
+      <br>
+      <hr>
+      <div id="crear-comentario">
+        <h5>Comentar</h5>
+        <form>
+          <div>
+            <label>Tu opinión</label>
+          </div>
+          <div>
+            <textarea id="descripcion"></textarea>
+          </div>
+          
+          <label for="puntuacion">Puntuación</label>
+          <select name="puntuacion" id="puntuacion">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <button type="button" onclick="agregarComentario()" class="btn">Enviar</button>
+        </form>
+
+      </div>
+
     </div>
   </main>
+
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">

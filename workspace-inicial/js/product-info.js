@@ -3,10 +3,12 @@ const URL_COMMENTS = PRODUCT_INFO_COMMENTS_URL + localStorage.getItem('ProdId')+
 let products = {};
 
 document.addEventListener("DOMContentLoaded", ()=> {
-    fetch (URL)
-    .then(resp => resp.json())
-    .then(data => {
+     async function fetchProductInfo(){
+     const resp = await fetch(URL);
+     const data = await resp.json();
+
         products  = data;
+     
 
         document.getElementById("productName").innerHTML= products.name;
         document.getElementById("productCost").innerHTML= products.cost;
@@ -16,7 +18,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
 
         let listaNodo = document.getElementById("product-list");
         
-        products.images.forEach((imagen) => {
+            products.images.forEach((imagen) => {
             let divNodo = document.createElement("div");
             divNodo.className = "imgContenedor";
             
@@ -27,14 +29,16 @@ document.addEventListener("DOMContentLoaded", ()=> {
             divNodo.appendChild(imgNodo);
             listaNodo.appendChild(divNodo);
         });
-    })
+      }
+      fetchProductInfo();
 });
 
-fetch(URL_COMMENTS)
-.then(resp => resp.json())
-.then(comentarios => { 
+async function fetchComments(){
+    const resp = await fetch(URL_COMMENTS);
+    const comentarios = await resp.json();
     mostrarComentarios(comentarios);
-});
+}
+fetchComments();
 
 const mostrarComentarios = function(comentarios) {
     comentarios.forEach((comentario) => {
@@ -102,3 +106,6 @@ const agregarComentario = function () {
     mostrarComentarios(lista);
 
 }
+     });
+  };
+  

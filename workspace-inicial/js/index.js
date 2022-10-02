@@ -12,5 +12,5 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
    
-    document.getElementById("user-email").innerHTML=localStorage.getItem("userEmail");
+    document.getElementById("user-email").innerHTML=sessionStorage.getItem("userEmail");
 });

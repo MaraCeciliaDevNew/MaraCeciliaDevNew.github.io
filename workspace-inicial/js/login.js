@@ -3,7 +3,7 @@ document.getElementById("ok").addEventListener("click",function(){
     const password=document.getElementById("passw").value;
 
     if (email&&password){
-        localStorage.setItem("userEmail",email);
+        sessionStorage.setItem("userEmail",email);
         window.location.href ="index.html";
 
     }else{

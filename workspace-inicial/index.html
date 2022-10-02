@@ -20,6 +20,7 @@
     img {
       width: 500px;
     } 
+   
   </style>
 </head>
 
@@ -42,10 +43,21 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../entregable 1 grupal/registro/index.html">Registro</a>
+            <a class="nav-link" href="../registro/index.html">Registro</a>
           </li>
           <li class="nav-item">
-            <span class="nav-link" id="user-email"></span>
+           
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="user-email" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown button
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="user-email">
+              <li><a class="dropdown-item active" href="../workspace-inicial/cart.html">Mi Carrito</a></li>
+              <li><a class="dropdown-item" href="../workspace-inicial/my-profile.html">Mi Perfil</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="../workspace-inicial/login.html">Cerrar Sesión</a></li>
+            </ul>
+          </div>
           </li>
         </ul>
       </div>

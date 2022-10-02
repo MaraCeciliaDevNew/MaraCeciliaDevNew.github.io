@@ -1,46 +1,52 @@
 
 
   let jsonData;
-  let listaFiltrada = [];
-  fetch(PRODUCTS_URL + localStorage.getItem('catID') + EXT_TYPE)
-  .then(respuesta => respuesta.json())
-  .then(data => {
+  let listaFiltrada = []; //definida para aplicar filtros de busqueda
+
    
+    async function fetchProducts(){
+    const resp = await fetch(PRODUCTS_URL + localStorage.getItem('catID') + EXT_TYPE);
+    const data = await resp.json();
     jsonData = data
     console.log(data);
 
     mostrarLista(jsonData.products);
   
+}
+fetchProducts();
 
-  });
+    
 
- 
+
+
+ //mostramos cada producto específico
   function mostrarProducto(id){ 
     localStorage.setItem('ProdId',id);
     window.location.href= "product-info.html";
   }
 
-
+//mostramos productos de cada categoría
   function mostrarLista(products){
     let content = '';
     products.forEach((element) => {
-      let carName= element.name;
-      let carCurrency= element.currency;
-      let carCost= element.cost;
-      let carDescription= element.description;
-      let carSoldCount= element.soldCount;
-      let carId = element.id;
+      let catName= element.name;
+      let catCurrency= element.currency;
+      let catCost= element.cost;
+      let catDescription= element.description;
+      let catSoldCount= element.soldCount;
+      let catId = element.id;
 
-    
+  
+
 
       let tdImage= "<td>" +
-      "<img src='"+element.image+"' class='autos-img' onclick='mostrarProducto("+carId+")' /></td>";
+      "<img src='"+element.image+"' class='autos-img' onclick='mostrarProducto("+catId+")' /></td>";
       let tdContent ="<td>"+
-        "<span>"+ carName + " " + carCurrency +" "+ carCost + "</span>"  + "<br>" +
-        "<span>"+ carDescription+ "</span>";
+        "<span>"+ catName + " " + catCurrency +" "+ catCost + "</span>"  + "<br>" +
+        "<span>"+ catDescription+ "</span>";
       "</td>";
       
-      let tdCant = "<td><span>" + carSoldCount + "</span></td>";
+      let tdCant = "<td><span>" + catSoldCount + "</span></td>";
       content +=  "<tr>" + tdImage + tdContent + tdCant + "</tr>";
 
     

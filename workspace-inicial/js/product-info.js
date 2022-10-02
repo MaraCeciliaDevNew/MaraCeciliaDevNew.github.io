@@ -106,6 +106,49 @@ const agregarComentario = function () {
     mostrarComentarios(lista);
 
 }
+
+async function fetchProducts (){
+  const resp = await fetch(URL);
+  const data = await resp.json();
+
+  mostrarRelatedProducts(data.relatedProducts);
+};
+
+fetchProducts();
+
+function mostrarProductoDos(id){ 
+    localStorage.setItem('ProdId',id); 
+    window.location.href= "product-info.html";
+};
+  
+function mostrarRelatedProducts(relatedProducts){
+    console.log(relatedProducts);
+    
+
+  relatedProducts.forEach((element)=> {
+        
+      let catName= element.name;
+      let catID = element.id;
+      // const { id, name } = element;
+      let divNodo = document.getElementById("productosRelacionados");
+      let imgNodo = document.createElement("img");
+
+      imgNodo.className = "img-tamaño";
+      imgNodo.src = element.image;
+      console.log(this);
+      // método bind que me devuelve una nueva funcion sin ejecutarse y puedo
+      // pasar parámetros
+      imgNodo.onclick= mostrarProductoDos.bind(this, catID);
+
+      divNodo.appendChild(imgNodo);
+      
+      let spanNodo = document.createElement("span");
+      let textNode = document.createTextNode(catName);
+
+      divNodo.appendChild(spanNodo);
+      spanNodo.appendChild(textNode);
+     
+    
      });
   };
   

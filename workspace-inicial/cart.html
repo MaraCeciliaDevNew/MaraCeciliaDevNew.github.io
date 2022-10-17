@@ -9,6 +9,25 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <style>
+   #i-node {
+    width: 100px;
+    
+   }
+   .hstack {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: stretch;
+}
+
+.vstack {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-self: stretch;
+}
+  </style>
 </head>
 
 <body>
@@ -36,11 +55,70 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <div class="container" id="carrito-de-compras"> 
+      <br/>
+      <h3> Carrito de compras </h3>
+      <hr>
+      <br>
+      <h5> Artículos a comprar </h5>
+      <br>
+      <div id="listaCompras" class="container">
+        <div class="row">
+          <div class="col"></div>
+          <div class="col">Nombre</div>
+          <div class="col">Costo</div>
+          <div class="col">Cantidad</div>
+          <div class="col">Subtotal</div>
+        </div>
       </div>
+      <br>
+    <div>
+  </main>
+  <br>
+  <main>
+    <br/>
+    <br/>
+    <hr/>
+    <div class="container"> 
+      <h5> Tipo de envío </h5>
+      <br/>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+        <label class="form-check-label" for="flexRadioDefault1">
+          Premium 2 a 5 días (15%)
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+        <label class="form-check-label" for="flexRadioDefault1">
+          Express 5 a 8 días (7%)
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+        <label class="form-check-label" for="flexRadioDefault2">
+          Standard 12 a 15 días (5%)
+        </label>
+      </div>
+          <br>
+          <h5> Dirección de envío </h5>
+          <br/>
+          <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Calle:</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+          </div>
+         
+          <div class="mb-3">
+            <label for="formGroupExampleInput2" class="form-label">Esquina:</label>
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+          </div>
+
+          <div class="mb-3">
+            <label for="formGroupExampleInput2" class="form-label">Número de puerta:</label>
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+          </div>
     </div>
+    <hr/>
   </main>
   <footer class="text-muted">
     <div class="container">

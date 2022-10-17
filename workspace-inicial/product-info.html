@@ -74,12 +74,13 @@
   
   <main>
     <div class="container">
-
       <div class="row">
         <div class="col">
           <h3 id="productName" class="nameProduct-info"></h3>
           <hr />
-        
+          <p align ="right">
+            <input type="button" value="Comprar" onclick="agregarArticulo()" id="comprar"/>
+          </p>
           <h4 class="subtitulosProduct-info">Costo:</h4>
           <p id="productCost"></p>
           
@@ -130,17 +131,11 @@
       </div>
       <br>
       <div>
-        <div id="productos-relacionados">
-          
-            <label>Productos Relacionados</label>
-          
+        <div id="productos-relacionados">         
+            <label>Productos Relacionados</label>   
           <hr>
-          <div id="productosRelacionados">
-            
-          </div>
           
-          
-
+          <div id="productosRelacionados"></div>  
         </div>
       </div>
 

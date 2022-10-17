@@ -152,3 +152,9 @@ function mostrarRelatedProducts(relatedProducts){
      });
   };
   
+  //Hacer function que al hacer click en comprar se dirija a cart.html y me agregue
+  //ese articulo seleccionado a la lista de articulos. por ahora solo me dirige a cart.html
+  
+  document.getElementById("comprar").onclick = function agregarArticulo () {
+    location.href = "../workspace-inicial/cart.html";
+};

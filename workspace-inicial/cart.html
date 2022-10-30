@@ -54,8 +54,8 @@
       </div>
     </div>
   </nav>
-  <main>
-    <div class="container" id="carrito-de-compras"> 
+  <main class="container">
+    <div id="carrito-de-compras"> 
       <br/>
       <h3> Carrito de compras </h3>
       <hr>
@@ -68,58 +68,168 @@
           <div class="col">Nombre</div>
           <div class="col">Costo</div>
           <div class="col">Cantidad</div>
-          <div class="col">Subtotal</div>
+          <div class="col" id="subtotal-un-articulo">Subtotal</div>
         </div>
       </div>
       <br>
     <div>
   </main>
   <br>
-  <main>
+  <main class="container">
     <br/>
     <br/>
     <hr/>
-    <div class="container"> 
+    <div> 
       <h5> Tipo de envío </h5>
       <br/>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-        <label class="form-check-label" for="flexRadioDefault1">
+        <input onchange="calcEnvio('0.15')"class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+        <label class="form-check-label" for="flexRadioDefault1" id="premium">
           Premium 2 a 5 días (15%)
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-        <label class="form-check-label" for="flexRadioDefault1">
+        <input onchange="calcEnvio('0.07')" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+        <label class="form-check-label" for="flexRadioDefault1" id="express">
           Express 5 a 8 días (7%)
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-        <label class="form-check-label" for="flexRadioDefault2">
+        <input onchange="calcEnvio('0.05')"class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+        <label class="form-check-label" for="flexRadioDefault2" id="standard">
           Standard 12 a 15 días (5%)
         </label>
       </div>
-          <br>
-          <h5> Dirección de envío </h5>
-          <br/>
-          <div class="mb-3">
+        <hr>
+        <br>
+        <h5> Dirección de envío </h5>
+        <br/>
+       <div>
+          <div class="mb-3 error">
             <label for="formGroupExampleInput" class="form-label">Calle:</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="">
+            <input onkeyup="validarForm(event)" type="text" class="form-control" id="calleid" placeholder="">
+            <div class="invalid-feedback">
+              Ingrese una calle.
+            </div>
           </div>
          
           <div class="mb-3">
             <label for="formGroupExampleInput2" class="form-label">Esquina:</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+            <input onkeyup="validarForm(event)" type="text" class="form-control" id="esquinaid" placeholder="">
+            <div class="invalid-feedback">
+              Ingrese una esquina.
+            </div>
           </div>
 
           <div class="mb-3">
             <label for="formGroupExampleInput2" class="form-label">Número de puerta:</label>
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+            <input onkeyup="validarForm(event)" type="text" class="form-control" id="numero-de-puertaid" placeholder="">
+            <div class="invalid-feedback">
+              Ingrese un numero de puerta.
+            </div>
           </div>
-    </div>
+       </div>
+       <br>
+       <hr>
+       <h5>Costos</h5>
+       <br>
+       <div  class="row g-3">
+        <div class="mb-3">
+          <label for="formGroupExampleInput" class="form-label" id="subTotalF">SubTotal</label>
+          <div type="text" class="container form-control" id="subT" placeholder="Costo unitario del producto por cantidad">
+        </div>
+       
+        <div class="mb-3">
+          <label for="formGroupExampleInput2" class="form-label" id="costoEnvio">
+            Costo de envío
+          </label>
+          <div class="container form-control" id="costE" placeholder="Según el tipo de envío">
+        </div>
+
+        <div class="mb-3">
+          <label for="formGroupExampleInput2" class="form-label" id="total">Total</label>
+          <div type="text" class="container" id="tot" placeholder="USD">
+        </div>
+      </div>
     <hr/>
-  </main>
+    <br>
+   <!--<div class="col">
+      <button 
+      onclick="eliminarId()" 
+      type="button" 
+      class="btn btn-secondary"> Eliminar
+    </button>
+    </div>--> 
+  <!-- Button trigger modal -->
+  <div class="row">
+    <div class="col">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="forma-de-pagoid">
+        Selecciona forma de pago aqui
+      </button>
+    </div>
+    
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Forma de pago</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <!--Comienza formulario de forma de pago-->
+        <div class="modal-body">
+            <!--Tarjeta de crédito-->
+          <div class="form-check">
+            <input name="forma-de-pago" class="form-check-input forma-pago" type="radio" id="input-tarjeta-de-credito">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Tarjeta de crédito</label>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col">
+              <input 
+                  type="text"
+                  onkeyup="validarForm(event)"
+                  class="form-control" 
+                  placeholder="Numero de tarjeta" 
+                  aria-label="First name" id="numero-de-tarjeta"
+                  >
+            </div>
+            <div class="col">
+              <input  onkeyup="validarForm(event)" type="password" class="form-control" id="codigo-de-seguridad" placeholder="código de seguridad" aria-label="Last name">
+            </div>
+          </div>
+          <br>
+          <div class="form-floating">
+            <input  onkeyup="validarForm(event)" type="month" class="form-control"  placeholder="" id="vencimiento">
+            <label for="floatingPassword">Vencimiento</label>
+          </div>
+          <hr>
+          <!--Tranferencia bancaria-->
+          <div class="form-check">
+            <input name="forma-de-pago" class="form-check-input forma-pago" type="radio" id="input-transferencia-bancaria">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Transferencia bancaria</label>
+          </div>
+        <hr>
+        <br>
+          <div class="col">
+            <input onkeyup="validarForm(event)" type="text" class="form-control" id="numero-de-cuenta" placeholder="Número de cuenta" aria-label="Last name">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!--Termina Formulario de forma de pago-->
+    <br>
+    <br>
+    <!--Botón de finalizar compra con validaciones -->
+  <div class="row">
+    <button class="btn btn-primary" type="submit" id="finalizar-compra" onclick="validar()">Finalizar compra</button>
+  </div>
+</main>
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">

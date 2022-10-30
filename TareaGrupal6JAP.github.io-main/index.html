@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>Registro v2</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+  <div class="container">
+    <main>
+      <form method="get" class="row mt-4 needs-validation" id="myForm" onsubmit="validarpass()" novalidate>
+        <div class="col">
+          <h1 class="mb-3">Registro</h1>
+          <hr class="my-4">
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="nombre" name="nombre" required>
+              <div class="invalid-feedback">
+                Debe ingresar un nombre.
+              </div>
+
+            </div>
+
+            <div class="col-sm-6">
+              <label for="apellido" class="form-label">Apellido</label>
+              <input type="text" class="form-control" id="apellido"  name="apellido" required>
+              <div class="invalid-feedback">
+                Debe ingresar un apellido.
+              </div>
+
+            </div>
+
+            <div class="col-12">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" name="email" required>
+              <div class="invalid-feedback">
+                Debe ingresar un email.
+              </div>
+
+            </div>
+
+            <div class="col-sm-6">
+              <label for="password1" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="password1"  name="password1" required minlength="6">
+              <div class="invalid-feedback">
+                Debe ingresar una contraseña con al menos 6 caracteres.
+              </div>
+
+            </div>
+
+            <div class="col-sm-6">
+              <label for="password2" class="form-label">Repetir contraseña</label>
+              <input type="password" class="form-control" id="password2" name="password2" required>
+              <div class="invalid-feedback">
+                Debe ser igual a "contraseña".
+              </div>
+
+            </div>
+
+            <div class="row" style="padding: 12px;">
+              <div class="col-3" id="botonTerminos">
+                <button type="button" class="btn btn-link ps-0" id="btn-modal-terminos" data-bs-toggle="modal" 
+                data-bs-target="#modalTerminos" name="boton">Términos del servicio</button>
+              </div>
+              <div class="col" id="cartelCheckbox">
+            
+              </div>
+            </div>
+
+            <button class="btn btn-primary" type="submit" id="regBtn">Registrarme</button>
+
+          </div>
+        </div>
+      </form>
+
+    </main>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">
+        Jovenes a Programar</a> - 2022</p>
+      <p class="mb-1">Es un sitio generado con fines estrictamente educativos. No realiza registros ni guarda 
+        datos de ningún tipo.</p>
+    </footer>
+  </div>
+...
+  <div class="modal fade" id="modalTerminos" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5">Términos y condiciones del servicio.</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus quasi sapiente voluptatum 
+            deserunt? Deleniti, adipisci vitae in quaerat eius nemo optio? Quas at magni saepe cumque. Delectus 
+            perspiciatis omnis
+            accusamus.</p>
+        </div>
+        <div class="modal-footer">
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="terminos" required>
+
+            <div id="labelTerminos">
+              <label class="form-check-label" for="terminos">Acepto los términos y condiciones del servicio.
+              </label>
+            </div>  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/validacion.js"></script>
+</body>
+
+</html>

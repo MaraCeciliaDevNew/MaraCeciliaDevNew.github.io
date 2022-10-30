@@ -1,15 +1,15 @@
 const URL= PRODUCT_INFO_URL + localStorage.getItem('ProdId')+ EXT_TYPE;
 const URL_COMMENTS = PRODUCT_INFO_COMMENTS_URL + localStorage.getItem('ProdId')+ EXT_TYPE;
+
 let products = {};
 
 document.addEventListener("DOMContentLoaded", ()=> {
      async function fetchProductInfo(){
-     const resp = await fetch(URL);
-     const data = await resp.json();
+        const resp = await fetch(URL);
+        const data = await resp.json();
 
-        products  = data;
+            products = data;
      
-
         document.getElementById("productName").innerHTML= products.name;
         document.getElementById("productCost").innerHTML= products.cost;
         document.getElementById("productDescription").innerHTML= products.description;
@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
         });
       }
       fetchProductInfo();
+      
 });
 
 async function fetchComments(){
@@ -129,7 +130,6 @@ function mostrarRelatedProducts(relatedProducts){
         
       let catName= element.name;
       let catID = element.id;
-      // const { id, name } = element;
       let divNodo = document.getElementById("productosRelacionados");
       let imgNodo = document.createElement("img");
 
@@ -152,9 +152,28 @@ function mostrarRelatedProducts(relatedProducts){
      });
   };
   
-  //Hacer function que al hacer click en comprar se dirija a cart.html y me agregue
-  //ese articulo seleccionado a la lista de articulos. por ahora solo me dirige a cart.html
-  
+  //Hacer function que al hacer click en comprar me guarde en local.Storage el articulo 
+  //en forma de objeto ,se dirija a cart.html y de ahi llamo al objeto y lo inserto 
+  // en articles
+
   document.getElementById("comprar").onclick = function agregarArticulo () {
-    location.href = "../workspace-inicial/cart.html";
+   const selectedArticle = {
+    id: products.id,
+    count: 1,
+    image: products.images[0],
+    unitCost: products.cost,
+    currency: products.currency,
+    name: products.name,
+   };
+
+   console.log(selectedArticle);
+   localStorage.setItem('selectedArticle', JSON.stringify(selectedArticle));
+   location.href = "../workspace-inicial/cart.html";
+
+//al hacer click guardar  en un objeto propertys que desee. 
+//probar hacerlo con : localStorage.setItem ('articulo-seleccionado', products.stringify (articulo));
+//cada objeto va a ser una compra, a ese objeto lo voy a pushear a un array definido en cart.js
+// cada vez que se agregue un objeto al array se va a mostrar porque ese array va a estar dentro de 
+// de un foreach 
+
 };

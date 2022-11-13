@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
         const resp = await fetch(URL);
         const data = await resp.json();
 
-            products = data;
+        products = data;
      
         document.getElementById("productName").innerHTML= products.name;
         document.getElementById("productCost").innerHTML= products.cost;
@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", ()=> {
             divNodo.appendChild(imgNodo);
             listaNodo.appendChild(divNodo);
         });
-      }
-      fetchProductInfo();
+    }
+    fetchProductInfo();
       
 });
 
@@ -38,7 +38,7 @@ async function fetchComments(){
     const resp = await fetch(URL_COMMENTS);
     const comentarios = await resp.json();
     mostrarComentarios(comentarios);
-}
+};
 fetchComments();
 
 const mostrarComentarios = function(comentarios) {
@@ -67,7 +67,7 @@ const mostrarComentarios = function(comentarios) {
                 estrella.className = 'fa fa-star checked';
             }
             puntuacionSpan.appendChild(estrella);
-        }
+        };
 
         primerFila.appendChild(usuarioSpan);
         primerFila.appendChild(fechaSpan); 
@@ -85,15 +85,8 @@ const mostrarComentarios = function(comentarios) {
         document.getElementById("comments").appendChild(primerFila);
         document.getElementById("comments").appendChild(segundaFila);
     });
-}
+};
 
-/*
-dateTime: "2020-02-25 18:03:52"
-description: "Ya llevo un año con este auto y la verdad que tiene sus ventajas y desventajas"
-product: 50921
-score: 3
-user: "juan_pedro"
-*/
 
 const agregarComentario = function () {
     const lista = [];
@@ -103,14 +96,13 @@ const agregarComentario = function () {
         dateTime: new Date(),
         user: localStorage.getItem("userLog"),
     };
-    lista.push(comentario);
-    mostrarComentarios(lista);
-
-}
+        lista.push(comentario);
+        mostrarComentarios(lista);
+};
 
 async function fetchProducts (){
-  const resp = await fetch(URL);
-  const data = await resp.json();
+    const resp = await fetch(URL);
+    const data = await resp.json();
 
   mostrarRelatedProducts(data.relatedProducts);
 };
@@ -126,7 +118,7 @@ function mostrarRelatedProducts(relatedProducts){
     console.log(relatedProducts);
     
 
-  relatedProducts.forEach((element)=> {
+    relatedProducts.forEach((element)=> {
         
       let catName= element.name;
       let catID = element.id;
@@ -136,8 +128,10 @@ function mostrarRelatedProducts(relatedProducts){
       imgNodo.className = "img-tamaño";
       imgNodo.src = element.image;
       console.log(this);
+
       // método bind que me devuelve una nueva funcion sin ejecutarse y puedo
       // pasar parámetros
+
       imgNodo.onclick= mostrarProductoDos.bind(this, catID);
 
       divNodo.appendChild(imgNodo);
@@ -147,16 +141,13 @@ function mostrarRelatedProducts(relatedProducts){
 
       divNodo.appendChild(spanNodo);
       spanNodo.appendChild(textNode);
-     
     
-     });
-  };
+    });
+};
   
-  //Hacer function que al hacer click en comprar me guarde en local.Storage el articulo 
-  //en forma de objeto ,se dirija a cart.html y de ahi llamo al objeto y lo inserto 
-  // en articles
+let userEmail = sessionStorage.getItem("userEmail");
 
-  document.getElementById("comprar").onclick = function agregarArticulo () {
+document.getElementById("comprar").onclick = function agregarArticulo () {
    const selectedArticle = {
     id: products.id,
     count: 1,
@@ -165,15 +156,11 @@ function mostrarRelatedProducts(relatedProducts){
     currency: products.currency,
     name: products.name,
    };
-
-   console.log(selectedArticle);
-   localStorage.setItem('selectedArticle', JSON.stringify(selectedArticle));
-   location.href = "../workspace-inicial/cart.html";
-
-//al hacer click guardar  en un objeto propertys que desee. 
-//probar hacerlo con : localStorage.setItem ('articulo-seleccionado', products.stringify (articulo));
-//cada objeto va a ser una compra, a ese objeto lo voy a pushear a un array definido en cart.js
-// cada vez que se agregue un objeto al array se va a mostrar porque ese array va a estar dentro de 
-// de un foreach 
+   if (userEmail){
+    localStorage.setItem('selectedArticle', JSON.stringify(selectedArticle));
+    location.href = "../workspace-inicial/cart.html";
+   }else{
+    alert ("Debe registrarse para poder realizar compras")
+   }
 
 };

@@ -52,13 +52,24 @@ inputs.forEach((input) => {
 
 var form =document.querySelector("form");
 
+function goLogin(){
+  const email=document.getElementById("email").value;
+  const password=document.getElementById("password1").value;
+
+  if (email&&password){
+      sessionStorage.setItem("userEmail",email);
+      const newLocal = window.location.href = '../workspace-inicial/login.html';
+      //email= sessionStorage.getItem("userEmail");
+  }
+};
+
 form.addEventListener("submit", (event) => {
   var checkboxCheck = document.getElementById("terminos").checked;
   event.preventDefault();
   
   if(checkboxCheck && form.checkValidity()){
     alert("¡Te has registrado con éxito!") ;
-    form.submit(); 
+    goLogin(); 
   };
 
   var nuevoBotonDeTerminos = `<button type="button" class="btn btn-link ps-0" id="btn-modal-terminos" data-bs-toggle="modal" data-bs-target="#modalTerminos" style="color:red ;">Términos del servicio</button>`
@@ -88,3 +99,5 @@ form.addEventListener("submit", (event) => {
   };
 
 });
+
+

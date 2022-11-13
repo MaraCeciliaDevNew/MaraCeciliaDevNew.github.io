@@ -44,14 +44,6 @@ function updateArticlesList(product) {
         listaArticulos.push(selectedArticle);
         localStorage.removeItem('selectedArticle');
     }
-
-    /*const deleteId = localStorage.getItem('deleteId')
-    if (deleteId){
-        localStorage.removeItem('deleteId')
-        listaArticulos = listaArticulos.filter((articulo) => {
-            return articulo.id.toString() !== deleteId
-        })
-    }*/
         
     localStorage.setItem('listaArticulos', JSON.stringify(listaArticulos));
 };
@@ -255,12 +247,12 @@ function validar() {
 };
 
 
-function borrarArticle(article){
-if (article){
+/* function borrarArticle(article){
+    if (article){
 
-}else{
-    
-}
-}
+    } else {
+        
+    }
+}*/
 
   

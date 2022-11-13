@@ -23,6 +23,9 @@
         font-size: 3.5rem;
       }
     }
+    #profileImg {
+      width: 200px;
+    }
   </style>
 </head>
 
@@ -51,10 +54,60 @@
     </div>
   </nav>
   <main>
+    <br>
+    <br>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+      <form class="row g-3">
+        <div class="col-md-4">
+          <img id="profileImg" />
+        </div>
+        <br>
+        <br>
+        <div class="col-md-4" style="width: 30%;">
+          <label for="validationServer01" class="form-label">Nombre*</label>
+          <input type="text" class="form-control" id="validationServer01"  required>
+        </div>
+
+        <div class="col-md-4" style="width: 30%;">
+          <label for="validationServer03" class="form-label">Apellido*</label>
+          <input type="text" class="form-control " id="validationServer03"  required>
+        </div>
+
+        <div class="col-md-4" style="width: 40%;">
+          <label for="validationServer02" class="form-label">Segundo Nombre</label>
+          <input type="text" class="form-control " id="validationServer02" >
+        </div>
+
+        <div class="col-md-4" style="width: 40%;">
+          <label for="validationServer04" class="form-label">Segundo Apellido</label>
+          <input type="text" class="form-control " id="validationServer04" >
+        </div>
+      
+        <div class="col-md-4" style="width: 40%;">
+          <label for="validationServer05" class="form-label">Email*</label>
+          <input type="text" class="form-control " id="validationServer05"  required>
+        </div>
+
+        <div class="col-md-4" style="width: 40%;">
+          <label for="validationServer06" class="form-label">Teléfono de Contacto</label>
+          <input type="text" class="form-control " id="validationServer06" >
+        </div>
+
+        <br>
+        <br>
+
+        <div>
+          <label for="myfile">Selecciona una foto de perfil</label>
+          <input type="file" id="myfile" name="myfile" onchange="subirArchivo(event)"><br><br> 
+          
+        </div>
+       
+        <div class="col-12">
+          <button class="btn btn-primary" type="button"  onclick="saveDataProfile()">Guardar Cambios</button>
+        </div>
+
+       
+      </form>
     </div>
   </main>
   <footer class="text-muted">

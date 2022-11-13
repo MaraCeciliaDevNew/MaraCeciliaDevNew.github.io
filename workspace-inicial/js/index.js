@@ -14,3 +14,22 @@ document.addEventListener("DOMContentLoaded", function(){
    
     document.getElementById("user-email").innerHTML=sessionStorage.getItem("userEmail");
 });
+
+  function ShowDropdown(){
+    let nombreDeUsuario = sessionStorage.getItem("userEmail");
+    let buttonDropDown = document.getElementById("user-email");
+
+    if (!nombreDeUsuario){
+        buttonDropDown.disabled = true;
+        alert ("Registrese para acceder");
+    }else{
+        buttonDropDown.disabled = false;
+   }
+   
+  };
+
+
+
+
+
+

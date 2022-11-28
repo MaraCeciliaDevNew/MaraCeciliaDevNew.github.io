@@ -41,6 +41,9 @@
   .img-tamaño{
     width: 150px;
   }
+  #carouselExampleInterval {
+    left: 25%;
+  }
   
 
 </style>
@@ -134,8 +137,22 @@
         <div id="productos-relacionados">         
             <label>Productos Relacionados</label>   
           <hr>
-          
-          <div id="productosRelacionados"></div>  
+          <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+              <div  class="carousel-inner" id="productosRelacionados">
+                <!--  aca traemos imagenes, le agregue clase al div para carousel-->
+              </div>  
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" 
+            data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+             data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        
         </div>
       </div>
 

@@ -118,23 +118,25 @@ function mostrarRelatedProducts(relatedProducts){
     console.log(relatedProducts);
     
 
-    relatedProducts.forEach((element)=> {
+    relatedProducts.forEach((element, index)=> {
         
       let catName= element.name;
       let catID = element.id;
       let divNodo = document.getElementById("productosRelacionados");
       let imgNodo = document.createElement("img");
 
-      imgNodo.className = "img-tamaño";
+      let divImgItem = document.createElement("div");
+      let divStyles = "carousel-item";
+      if (index === 0) {
+        divStyles += " active";
+      }
+      divImgItem.className = divStyles;
+      imgNodo.className = "d-block w-50 img-tamaño";
       imgNodo.src = element.image;
-      console.log(this);
-
-      // método bind que me devuelve una nueva funcion sin ejecutarse y puedo
-      // pasar parámetros
 
       imgNodo.onclick= mostrarProductoDos.bind(this, catID);
-
-      divNodo.appendChild(imgNodo);
+      divImgItem.appendChild(imgNodo);
+      divNodo.appendChild(divImgItem);
       
       let spanNodo = document.createElement("span");
       let textNode = document.createTextNode(catName);
